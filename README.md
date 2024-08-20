@@ -1,79 +1,60 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# React Native Photo App
 
-# Getting Started
+## Descrição
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+Este aplicativo permite ao usuário tirar uma foto usando a câmera do celular, capturar a geolocalização no momento da captura da foto e enviar a foto e a geolocalização para uma API Laravel.
 
-## Step 1: Start the Metro Server
+## Configuração e Execução
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+### Pré-requisitos
 
-To start Metro, run the following command from the _root_ of your React Native project:
+- Node.js
+- Yarn (opcional, mas recomendado)
+- Android Studio (para testar no Android)
 
-```bash
-# using npm
-npm start
+### Passos para Instalação
 
-# OR using Yarn
-yarn start
-```
+1. Clone o repositório:
 
-## Step 2: Start your Application
+   ```bash
+   git clone <URL_DO_REPOSITÓRIO>
+   cd <project>
+   ```
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+2. Instale as dependências:
 
-### For Android
+   ```bash
+   yarn install
+   # ou
+   npm install
+   ```
 
-```bash
-# using npm
-npm run android
+3. Execute o aplicativo no Android:
 
-# OR using Yarn
-yarn android
-```
+   ```bash
+   npx react-native run-android
+   # ou
+   npx react-native start
+   # teclar 'a' para rodar o app no emulador android
+   ```
 
-### For iOS
+4. Se tiver problemas com Network Error, o endpoint deve ser alterado no App.tsx - Para saber qual o IP da API, o projeto do photoApi do Laravel deve estar rodando e execute este comando fora do bash do container do docker:
 
-```bash
-# using npm
-npm run ios
+    ```bash
+    docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nginx
+    ```
 
-# OR using Yarn
-yarn ios
-```
+### Bibliotecas Utilizadas
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+- react-native-vision-camera (para tirar fotos)
+- react-native-geolocation-service (para obter a geolocalização)
+- axios (para enviar dados para a API Laravel)
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+### Estrutura do Projeto
 
-## Step 3: Modifying your App
+- App.tsx - Arquivo principal do aplicativo
 
-Now that you have successfully run the app, let's modify it.
+### Instruções Adicionais
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
-
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+Certifique-se de que o emulador ou dispositivo Android esteja configurado corretamente.
+A API Laravel deve estar rodando para que o aplicativo possa enviar dados.
